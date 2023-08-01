@@ -1,4 +1,4 @@
-require 'rails-helper'
+require 'rails_helper'
 
 RSpec.describe SubscriptionTea, type: :model do
   describe "relationships" do

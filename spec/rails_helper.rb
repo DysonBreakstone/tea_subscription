@@ -104,7 +104,7 @@ def test_data
   subscription_11 = Subscription.create!(customer_id: customer_6.id, title: "Six's semi-annual tea delivery", status: true, frequency: 26)
   subscription_12 = Subscription.create!(customer_id: customer_7.id, title: "Seven's quarterly", status: true, frequency: 13)
   subscription_13 = Subscription.create!(customer_id: customer_7.id, title: "Seven's favorite teas", status: true, frequency: 6)
-  subscription_14 = Subscription.create!(customer_id: customer_7.id, title: "Seven's estranged son", status: false frequency: 9)
+  subscription_14 = Subscription.create!(customer_id: customer_7.id, title: "Seven's estranged son", status: false, frequency: 9)
   subscription_15 = Subscription.create!(customer_id: customer_8.id, title: "Eight's tea biz", status: true, frequency: 2)
   subscription_16 = Subscription.create!(customer_id: customer_9.id, title: "Nine's super tea recs", status: false, frequency: 12)
   subscription_17 = Subscription.create!(customer_id: customer_9.id, title: "Nine's least favorite teas", status: true, frequency: 16)
