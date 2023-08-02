@@ -54,6 +54,9 @@ RSpec.describe "create" do
     before do
       test_data
 
+      six = @tea_6.id
+      seven = @tea_7.id
+      eight = @tea_8.id
       @subscription_params = {
         new_subscription: {
           title: "This is for my pet",
@@ -71,10 +74,12 @@ RSpec.describe "create" do
       customer = Customer.create!(first_name: "Bill", last_name: "Nobody", email: "Bill@Nobody.com")
 
       empty_params = {
-        title: "This is for my pet",
-        frequency: 4,
-        teas: {}
-      }
+          new_subscription:{
+            title: "This is for my pet",
+            frequency: 4,
+            teas: {}
+          }
+        }
       
       post "/customers/#{customer.id}/subscriptions", params: empty_params
       json = JSON.parse(response.body, symbolize_names: true)
@@ -88,21 +93,48 @@ RSpec.describe "create" do
       json = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to have_http_status(404)
-      expect(json[:errors]).to eq("Customer does not exist")
+      expect(json[:errors]).to eq("Customer does not exist.")
     end
 
     it "incorrect subscription parameters" do
+      six = @tea_6.id
+      seven = @tea_7.id
+      eight = @tea_8.id
       wrong_params = {
-        title: "This is for my pet",
-        frequency: "I have a pet cat",
-        teas: {
-          six => 6,
-          seven => 7,
-          eight => 8
+        new_subscription: {
+          title: "This is for my pet",
+          frequency: "I have a pet cat",
+          teas: {
+            six => 6,
+            seven => 7,
+            eight => 8
+          }
         }
       }
 
       post "/customers/#{@customer_6.id}/subscriptions", params: wrong_params
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to have_http_status(400)
+      expect(json[:errors]).to eq("I'm sorry, something went wrong.")
+    end
+    
+    it "tea does not exist" do
+      seven = @tea_7.id
+      eight = @tea_8.id
+      no_tea_params = {
+        new_subscription: {
+          title: "This is for my pet",
+          frequency: 4,
+          teas: {
+            848484848484 => 6,
+            seven => 7,
+            eight => 8
+          }
+        }
+      }
+
+      post "/customers/#{@customer_6.id}/subscriptions", params: no_tea_params
       json = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to have_http_status(400)
