@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :users do
+  resources :customers do
     resources :subscriptions, only: [:create, :update, :index, :edit]
   end
 end
