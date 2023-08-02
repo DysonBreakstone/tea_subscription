@@ -7,14 +7,14 @@ RSpec.describe "index" do
     end
 
     it "response" do
-      get customer_subscriptions_path(customer_1)
+      get customer_subscriptions_path(@customer_1)
 
       expect(response).to have_http_status(200)
       require 'pry'; binding.pry
     end
 
     it "gives data" do
-      get customer_subscriptions_path(customer_1)
+      get customer_subscriptions_path(@customer_1)
 
       json = JSON.parse(response.body, symbolize_names: true)
       expect(json).to have_key(:data)
