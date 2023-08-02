@@ -1,9 +1,12 @@
 class SubscriptionsController < ApplicationController
   def index
     customer = Customer.find_by_id(subscription_params[:customer_id])
-    # require 'pry'; binding.pry
     if customer
-      render json: SubscriptionsSerializer.new(customer.subscriptions)
+      if customer.subscriptions.size == 0
+        render json: {data: "Customer currently has no subscriptions."}
+      else
+        render json: SubscriptionsSerializer.new(customer.subscriptions)
+      end
     else
       render json: {errors: "Customer does not exist."}, status: 404
     end

@@ -28,4 +28,26 @@ RSpec.describe "index" do
       expect(first_attributes[:frequency]).to be_a(Integer)
     end
   end
+
+  describe "Sad Paths" do
+    before do
+      test_data
+    end
+
+    it "no customer" do
+      get customer_subscriptions_path(84848484848484)
+      expect(response).to have_http_status(404)
+
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(json[:errors]).to eq("Customer does not exist.")
+    end
+
+    it "no subscriptions" do
+      customer_13 = Customer.create(first_name: "Thirteen First", last_name: "Thirteen Last", email: "Customer@Thirteen.com")
+      get customer_subscriptions_path(customer_13)
+
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(json[:data]).to eq("Customer currently has no subscriptions.")
+    end
+  end
 end
