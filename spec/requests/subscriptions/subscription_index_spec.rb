@@ -26,6 +26,7 @@ RSpec.describe "index" do
       expect(first_attributes[:title]).to be_a(String)
       expect(first_attributes[:status]).to be_in([true, false])
       expect(first_attributes[:frequency]).to be_a(Integer)
+      expect(first_attributes[:price]).to be_a(Float)
     end
   end
 

@@ -85,6 +85,7 @@ GEM
     faraday-net_http (3.0.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hirb (0.7.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
@@ -200,6 +201,7 @@ DEPENDENCIES
   bootsnap
   debug
   faraday
+  hirb
   jsonapi-serializer
   pg (~> 1.1)
   pry
