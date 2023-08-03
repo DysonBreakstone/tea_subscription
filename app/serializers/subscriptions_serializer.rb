@@ -3,6 +3,8 @@ class SubscriptionsSerializer
   attributes :customer_id, :title, :status, :frequency
 
   attributes :price do |subscription|
-    subscription.teas.select("SUM()")
+    abba = subscription.subscription_teas.joins(:tea)
+      .group("subscription_teas.id")
+      .sum("subscription_teas.quantity * teas.price").values.sum
   end
 end
