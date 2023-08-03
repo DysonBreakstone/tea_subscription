@@ -13,7 +13,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    # require 'pry'; binding.pry
     if !params[:new_subscription][:teas] || params[:new_subscription][:teas].empty?
       render json: {errors: "Subscription cannot be empty"}, status: 422
       return
