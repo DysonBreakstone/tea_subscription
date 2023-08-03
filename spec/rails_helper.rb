@@ -32,6 +32,9 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+require 'simplecov'
+SimpleCov.start
+
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
