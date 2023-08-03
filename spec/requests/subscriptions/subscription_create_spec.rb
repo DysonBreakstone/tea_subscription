@@ -10,13 +10,13 @@ RSpec.describe "create" do
       eight = @tea_8.id
 
       @subscription_params = {
-        new_subscription: {
-          title: "This is for my pet",
-          frequency: 4,
-          teas: {
-            six => 6,
-            seven => 7,
-            eight => 8
+        "new_subscription": {
+          "title": "This is for my pet",
+          "frequency": 4,
+          "teas": {
+            six.to_s => 6,
+            seven.to_s => 7,
+            eight.to_s => 8
           }
         }
       }
@@ -58,13 +58,13 @@ RSpec.describe "create" do
       seven = @tea_7.id
       eight = @tea_8.id
       @subscription_params = {
-        new_subscription: {
-          title: "This is for my pet",
-          frequency: 4,
+        "new_subscription": {
+          "title": "This is for my pet",
+          "frequency": 4,
           teas: {
-            six => 6,
-            seven => 7,
-            eight => 8
+            six.to_s => 6,
+            seven.to_s => 7,
+            eight.to_s => 8
           }
         }
       }
@@ -74,10 +74,10 @@ RSpec.describe "create" do
       customer = Customer.create!(first_name: "Bill", last_name: "Nobody", email: "Bill@Nobody.com")
 
       empty_params = {
-          new_subscription:{
-            title: "This is for my pet",
-            frequency: 4,
-            teas: {}
+          "new_subscription":{
+            "title": "This is for my pet",
+            "frequency": 4,
+            "teas": {}
           }
         }
       
@@ -101,13 +101,13 @@ RSpec.describe "create" do
       seven = @tea_7.id
       eight = @tea_8.id
       wrong_params = {
-        new_subscription: {
-          title: "This is for my pet",
-          frequency: "I have a pet cat",
-          teas: {
-            six => 6,
-            seven => 7,
-            eight => 8
+        "new_subscription": {
+          "title": "This is for my pet",
+          "frequency": "I have a pet cat",
+          "teas": {
+            six.to_s => 6,
+            seven.to_s => 7,
+            eight.to_s => 8
           }
         }
       }
@@ -123,13 +123,13 @@ RSpec.describe "create" do
       seven = @tea_7.id
       eight = @tea_8.id
       no_tea_params = {
-        new_subscription: {
-          title: "This is for my pet",
-          frequency: 4,
-          teas: {
-            848484848484 => 6,
-            seven => 7,
-            eight => 8
+        "new_subscription": {
+          "title": "This is for my pet",
+          "frequency": 4,
+          "teas": {
+            848484848484.to_s => 6,
+            seven.to_s => 7,
+            eight.to_s => 8
           }
         }
       }
