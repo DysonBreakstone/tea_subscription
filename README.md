@@ -25,3 +25,6 @@ There is exhaustive edge-case and sad path testing for a variety of situations.
 ## Technologies
 
 Tea subscription uses Ruby 3.1.1 and Rails 7.0.6. Testing is done using RSpec and shoulda-matchers, with test coverage calculated using simplecov. Pry is used for debugging and jsonapi-serializer is used to create json serializer classes. 
+
+## Database Schema
+![Screenshot 2023-08-04 at 7 52 36 AM](https://github.com/DysonBreakstone/tea_subscription/assets/121531791/124ba66e-468b-4f26-b88f-a5301156bd27)
